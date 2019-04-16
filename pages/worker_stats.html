@@ -3,10 +3,9 @@
 <h3><span tkey="minerStats">Your Stats & Payment History</span></h3>
 
 <ul class="nav nav-tabs" id="blocksTabs">
-  <li role="presentation" class="active"><a href="#plura">(XUN)</a></li>
-  <li role="presentation"><a href="#monetaverde">(NaCa)</a></li>
+  <li role="presentation" class="active"><a href="#plura">TurtleGold (TG)</a></li>
+  <li role="presentation"><a href="#monetaverde"> (HITC)</a></li>
 </ul>
-
 
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="plura">
@@ -633,7 +632,7 @@ function getPaymentRowElement(payment, jsonString, merged){
 // Get payment cells
 function getPaymentCells(payment, merged){
     return '<td class="col1">' + formatDate(payment.time) + '</td>' +
-           '<td class="col2">' + formatPaymentLink(payment.hash) + '</td>' +
+           '<td class="col2">' + formatPaymentLink(payment.hash, merged) + '</td>' +
            '<td class="col3">' + (merged? getReadableCoinsMerged(payment.amount):getReadableCoins(payment.amount)) + '</td>' +
            '<td class="col4">' + payment.mixin + '</td>';
 }

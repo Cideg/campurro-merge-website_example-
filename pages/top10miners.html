@@ -1,6 +1,6 @@
 
 <!-- Top 10 miners -->
-<h3>ARQ <span tkey="top10miners">Top 10 miners</span></h3>
+<h3>42 <span tkey="top10miners">Top 10 miners</span></h3>
 <div class="card">
     <div id="top10miners" class="table-responsive">
         <table class="table table-striped">
@@ -19,9 +19,9 @@
     </div>
 </div>
 
-<h3>PLE <span tkey="top10miners">Top 10 miners</span></h3>
+<h3>DRGL <span tkey="top10miners">Top 10 miners</span></h3>
 <div class="card">
-    <div id="top10minersMerged2" class="table-responsive">
+    <div id="top10minersMerged" class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -32,7 +32,7 @@
                 <th class="col5 sort"><span tkey="totalHashes">Total Hashes Submitted</span></th>
             </tr>
             </thead>
-            <tbody id="top10minersMerged2_rows">
+            <tbody id="top10minersMerged_rows">
             </tbody>
         </table>
     </div>
@@ -81,11 +81,11 @@ function updateTop10() {
     });
 }
 
-function updateTop10Merged2() {
-    $("#top10minersMerged2_rows").empty();
+function updateTop10Merged() {
+    $("#top10minersMerged_rows").empty();
 
     var xhrGetTOP = $.ajax({
-        url: apiMerged2 + '/get_top10miners',
+        url: apiMerged + '/get_top10miners',
         data: {
             time: $('#top10_rows').children().last().data('time')
         },
@@ -94,7 +94,7 @@ function updateTop10Merged2() {
         success: function(data){
             if (!data) return;
             for (var i=0; i<data.length; ++i) {
-                $( "#top10minersMerged2_rows" ).append('<tr>' + getMinerCells(i+1, data[i]) + '</tr>');
+                $( "#top10minersMerged_rows" ).append('<tr>' + getMinerCells(i+1, data[i]) + '</tr>');
             }
         }
     });
@@ -103,9 +103,9 @@ function updateTop10Merged2() {
 
 // Load initial data
 updateTop10();
-updateTop10Merged2();
+updateTop10Merged();
 
 // Start updates once per minute
 var intervalUpdateTop10 = setInterval(updateTop10, (60*1000));
-var intervalUpdateTop10Merged2 = setInterval(updateTop10Merged2, (60*1000));
+var intervalUpdateTop10Merged = setInterval(updateTop10Merged, (60*1000));
 </script>
